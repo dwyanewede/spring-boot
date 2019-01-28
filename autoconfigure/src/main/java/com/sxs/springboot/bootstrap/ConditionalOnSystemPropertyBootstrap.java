@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 public class ConditionalOnSystemPropertyBootstrap {
 
     @Bean
-    @ConditionalOnSystemProperty(name = "user.name", value = "Mercy")
+    @ConditionalOnSystemProperty(name = "user.name", value = "尚先生")
     public String helloWorld() {
         return "Hello,World sxs";
     }
