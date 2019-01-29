@@ -1,5 +1,6 @@
 package com.sxs.web.config;
 
+import com.sxs.web.http.converter.properties.UserHttpMessageConverter;
 import com.sxs.web.method.support.PropertiesHandlerMethodArgumentResolver;
 import com.sxs.web.method.support.PropertiesHandlerMethodReturnValueHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,5 +72,6 @@ public class RestWebMvcConfigurer implements WebMvcConfigurer {
         // 不建议添加到 converters 的末尾
 //        converters.add(new PropertiesHttpMessageConverter());
 //        converters.set(0, new PropertiesHttpMessageConverter()); // 添加到集合首位
+//        converters.set(0, new UserHttpMessageConverter()); // 自定义text/user媒体类型         Content-Type text/user      consumes = "text/user;charset=UTF-8"
     }
 }
