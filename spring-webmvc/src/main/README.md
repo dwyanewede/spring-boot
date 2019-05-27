@@ -1,8 +1,8 @@
 ## spring web mvc
 
-### 结合tomcat实现jndi
+## spring结合tomcat实现jndi注入
 
-#### 配置 jndi resource数据源
+### 配置 jndi resource数据源
 在 `apache-tomcat-8.0.38\conf\context.xml`中配置
 ```xml
 <Resource name="jdbc/sxsDB"       
@@ -21,7 +21,7 @@
 
 ```
 
-#### 配置 maven 相关依赖
+### 配置 maven 相关依赖
 ```xml
     <!-- mybatis -->
     <dependency>
@@ -64,7 +64,7 @@
 ```
 
 
-#### 配置数据库连接
+### 配置数据库连接
 ```java
 @Configuration
 @MapperScan("com.sxs.web.mapper")
@@ -101,7 +101,7 @@ public class MybatisConfiguration {
 }
 ```
 
-#### 配置映射实体
+### 配置映射实体
 
 ```java
 public class Course implements Serializable {
@@ -156,7 +156,7 @@ public class Course implements Serializable {
 }
 ```
 
-#### 配置 mapper 映射
+### 配置 mapper 映射
 ```java
 @Mapper
 @Repository
@@ -170,7 +170,7 @@ public interface CourseMapper {
 }
 ```
 
-#### 配置控制器
+### 配置控制器
 
 ```java
 @RestController
@@ -199,3 +199,29 @@ public class CourseController {
 }
 
 ```
+### 添加SQL脚本
+```sql
+-- 查询所有的数据库
+show databases;
+-- 使用testdb
+use testdb;
+-- 查询testdb所有的表
+show tables ;
+-- 建表前清除
+drop table tb_score;
+-- 建表语句
+create table tb_score(
+  id bigint primary key auto_increment,
+  course_name varchar(20),
+  stu_name varchar(20),
+  score double
+);
+-- 插入数据
+insert into tb_score (course_name, stu_name, score) values ('高数','尚先生',100.00);
+insert into tb_score (course_name, stu_name, score) values ('英语','尚先生',80.00);
+insert into tb_score (course_name, stu_name, score) values ('英语','尚小菲',100.00);
+insert into tb_score (course_name, stu_name, score) values ('高数','尚小菲',90.00);
+```
+-- 查询入库数据
+select *
+from tb_score;
