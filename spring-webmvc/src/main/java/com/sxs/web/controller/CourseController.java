@@ -21,7 +21,7 @@ public class CourseController {
     @Autowired
     private CourseMapper courseMapper;
 
-    @GetMapping("/find-all-courses")
+    @GetMapping(value = "/find-all-courses",produces = {"application/json;charset=UTF-8"})
     public Collection<Course> findAllCourses(){
 
         Collection<Course> courses1 = courseMapper.findAllCourses();
@@ -32,7 +32,7 @@ public class CourseController {
         return courses1;
     }
 
-    @GetMapping("/find-single-course")
+    @GetMapping(value = "/find-single-course",produces = {"application/json;charset=UTF-8"})
     public String findSingleCourse(){
         Course course = courseMapper.findSingleCourse();
         course.setCurrentThreadName(Thread.currentThread().getName());
