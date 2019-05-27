@@ -27,15 +27,24 @@ import javax.sql.DataSource;
 public class MybatisConfiguration {
     @Bean
     public DataSource dataSource() throws ClassNotFoundException, NamingException {
-        // 方式一
+//        方式一  Tomcat 实现方式
 //        Context initContext = new InitialContext();
 //        Context envContext  = (Context)initContext.lookup("java:/comp/env");
 //        DataSource dataSource = (DataSource)envContext.lookup("jdbc/sxsDB");
 
-        // 方式二
+//        方式一 Jboss 实现方式
+//        Context initContext = new InitialContext();
+//        DataSource dataSource = (DataSource)initContext.lookup("java:jboss/jdbc/sxsDB");
+
+//        方式二 Tomcat 实现方式
         JndiObjectFactoryBean factoryBean = new JndiObjectFactoryBean();
         JndiTemplate jndiTemplate = factoryBean.getJndiTemplate();
         DataSource dataSource = jndiTemplate.lookup("java:/comp/env/jdbc/sxsDB", DataSource.class);
+
+//      方式二 Jboss 实现方式
+//        JndiObjectFactoryBean factoryBean = new JndiObjectFactoryBean();
+//        JndiTemplate jndiTemplate = factoryBean.getJndiTemplate();
+//        DataSource dataSource = jndiTemplate.lookup("java:jboss/jdbc/sxsDB", DataSource.class);
         return dataSource;
     }
 
