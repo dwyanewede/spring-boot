@@ -4,6 +4,7 @@
         "http://www.jboss.org/j2ee/dtd/jboss-web_3_2.dtd">
 <jboss-web>
     <context-root>/spring-webmvc-0.0.1-SNAPSHOT</context-root>
+    <!-- 等同于在web.xml中的配置 -->
     <resource-ref>
         <res-ref-name>jdbc/sxsDB</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>

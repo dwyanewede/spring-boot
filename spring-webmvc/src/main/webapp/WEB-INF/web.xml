@@ -15,10 +15,11 @@
         <!--<url-pattern>/</url-pattern>-->
     <!--</servlet-mapping>-->
 
-    <!-- JDBC DataSources (java:comp/env/jdbc) -->
+    <!-- JDBC DataSources (java:comp/env/jdbc) 等同于在及博士生jboss-web.xml中的配置  两者选一-->
     <resource-ref>
         <description>The default DS</description>
         <res-ref-name>jdbc/sxsDB</res-ref-name>
+        <!--<res-type>com.alibaba.druid.pool.DruidDataSource</res-type>-->
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
